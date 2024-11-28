@@ -1,0 +1,27 @@
+CREATE DATABASE biblioteca;
+
+USE biblioteca;
+
+CREATE TABLE Livros (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(255) NOT NULL,
+    Autor VARCHAR(255),
+    Publicacao DATE
+);
+
+CREATE TABLE Membros (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255),
+    Telefone VARCHAR(20)
+);
+
+CREATE TABLE Emprestimos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    LivroId INT,
+    MembroId INT,
+    DataEmprestimo DATE,
+    DataDevolucao DATE,
+    FOREIGN KEY (LivroId) REFERENCES Livros(Id),
+    FOREIGN KEY (MembroId) REFERENCES Membros(Id)
+);    
